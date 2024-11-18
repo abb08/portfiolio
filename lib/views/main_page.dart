@@ -13,10 +13,11 @@ class MainPage extends StatelessWidget {
   });
 
   final SidebarXController controller;
+  
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return const Expanded(
       child: SingleChildScrollView(
         child: Column(
           children: [

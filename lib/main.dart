@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/constants/constants.dart';
-import 'package:portfolio/views/about/about_view.dart';
-import 'package:portfolio/views/contact/contact_view.dart';
-import 'package:portfolio/views/experiences/experience_view.dart';
 import 'package:portfolio/views/side_bar.dart';
-import 'package:portfolio/views/projects/project_view.dart';
 import 'package:portfolio/views/main_page.dart';
-import 'package:portfolio/views/skills/skills_view.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -48,14 +42,41 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSmallScreen = ResponsiveBreakpoints.of(context).smallerThan(TABLET);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Portfolio'),
-      ),
+      //
+      // appBar: AppBar(
+      //   title: const Text('Portfolio'),
+      // ),
+      //
+      //
+      key: _key,
+      appBar: isSmallScreen
+          ? AppBar(
+              backgroundColor: canvasColor,
+              // title: Text(_getTitleByIndex(_controller.selectedIndex)),
+              leading: IconButton(
+                onPressed: () {
+                  // if (!Platform.isAndroid && !Platform.isIOS) {
+                  //   _controller.setExtended(true);
+                  // }
+                  _key.currentState?.openDrawer();
+                },
+                icon: const Icon(Icons.menu),
+              ),
+            )
+          : null,
+      drawer: SideBar(controller: _controller),
+
       body: Row(
         children: [
-          SideBar(controller: _controller),
-          MainPage(controller: _controller),
+          if (!isSmallScreen)
+            SideBar(
+              controller: _controller,
+            ),
+          MainPage(
+            controller: _controller,
+          ),
         ],
       ),
     );

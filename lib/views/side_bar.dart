@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/views/components/intro_view.dart';
-import 'package:portfolio/views/components/links_view.dart';
-import 'package:portfolio/views/components/menu_view.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class SideBar extends StatelessWidget {
@@ -78,55 +75,70 @@ class SideBar extends StatelessWidget {
       ),
       footerDivider: divider,
       headerBuilder: (context, extended) {
-        return SizedBox(
+        return const SizedBox(
           height: 100,
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image.asset('assets/images/avatar.png'),
+            padding: EdgeInsets.all(16.0),
+            // child: Image.asset('assets/images/avatar.png'),
           ),
         );
       },
       items: [
         SidebarXItem(
           icon: Icons.home,
-          label: 'Home',
+          label: 'About',
           onTap: () {
-            debugPrint('Home');
+            scrollToWidget(const GlobalObjectKey('about'));
           },
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.search,
-          label: 'Search',
+          label: 'Skills',
+          onTap: () {
+            scrollToWidget(const GlobalObjectKey('skills'));
+          },
         ),
-        const SidebarXItem(
+        SidebarXItem(
           icon: Icons.people,
-          label: 'People',
+          label: 'Experience',
+          onTap: () {
+            scrollToWidget(const GlobalObjectKey('experience'));
+          },
         ),
         SidebarXItem(
           icon: Icons.favorite,
-          label: 'Favorites',
-          selectable: false,
-          onTap: () => _showDisabledAlert(context),
+          label: 'Projects',
+          onTap: () {
+            scrollToWidget(const GlobalObjectKey('project'));
+          },
         ),
-        const SidebarXItem(
-          iconWidget: FlutterLogo(size: 20),
-          label: 'Flutter',
+        SidebarXItem(
+          icon: Icons.favorite,
+          label: 'Contact',
+          onTap: () {
+            scrollToWidget(const GlobalObjectKey('contact'));
+          },
         ),
       ],
     );
   }
+}
 
-  void _showDisabledAlert(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text(
-          'Item disabled for selecting',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-      ),
+void scrollToWidget(GlobalObjectKey widgetKey) {
+  WidgetsBinding.instance.addPostFrameCallback((_) async {
+    final context = widgetKey.currentContext;
+    if (context == null) {
+      debugPrint('Null');
+      return;
+    }
+
+    await Scrollable.ensureVisible(
+      context,
+      alignment: 0.3, // Positions the widget 30% from the top
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
     );
-  }
+  });
 }
 
 const primaryColor = Color(0xFF685BFF);

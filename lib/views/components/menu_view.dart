@@ -1,10 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/views/about/about_view.dart';
-import 'package:portfolio/views/contact/contact_view.dart';
-import 'package:portfolio/views/experiences/experience_view.dart';
-import 'package:portfolio/views/projects/project_view.dart';
-import 'package:portfolio/views/skills/skills_view.dart';
 
 class MenuView extends StatelessWidget {
   MenuView({super.key});
@@ -50,26 +45,26 @@ class MenuView extends StatelessWidget {
   }
 
   void _scrollToWidget(String menuItem) {
-    switch (menuItem) {
-      case 'About':
-        Scrollable.ensureVisible(AboutView().aboutKey.currentContext!);
-        print(menuItem);
-      case 'Skills':
-        Scrollable.ensureVisible(SkillsView().skillsKey.currentContext!);
-        print(menuItem);
+    // switch (menuItem) {
+    //   case 'About':
+    //     Scrollable.ensureVisible(AboutView().aboutKey.currentContext!);
+    //     print(menuItem);
+    //   case 'Skills':
+    //     // Scrollable.ensureVisible(SkillsView().skillsKey.currentContext!);
+    //     print(menuItem);
 
-      case 'Experience':
-        Scrollable.ensureVisible(
-            ExperienceView().experienceKey.currentContext!);
-        print(menuItem);
+    //   case 'Experience':
+    //     Scrollable.ensureVisible(
+    //         ExperienceView().experienceKey.currentContext!);
+    //     print(menuItem);
 
-      case 'Projects':
-        Scrollable.ensureVisible(ProjectView().projectKey.currentContext!);
-        print(menuItem);
+    //   case 'Projects':
+    //     Scrollable.ensureVisible(ProjectView().projectKey.currentContext!);
+    //     print(menuItem);
 
-      case 'Contact':
-        Scrollable.ensureVisible(ContactView().contactKey.currentContext!);
-        print(menuItem);
-    }
+    //   case 'Contact':
+    //     Scrollable.ensureVisible(ContactView().contactKey.currentContext!);
+    //     print(menuItem);
+    // }
   }
 }

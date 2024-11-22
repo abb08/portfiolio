@@ -37,37 +37,30 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final _controller = SidebarXController(selectedIndex: 0, extended: true);
+  final _controller = SidebarXController(
+    selectedIndex: 0,
+    extended: true,
+  );
   final _key = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     final isSmallScreen = ResponsiveBreakpoints.of(context).smallerThan(TABLET);
     return Scaffold(
-      //
-      // appBar: AppBar(
-      //   title: const Text('Portfolio'),
-      // ),
-      //
-      //
       key: _key,
-      appBar: isSmallScreen
-          ? AppBar(
-              backgroundColor: canvasColor,
-              // title: Text(_getTitleByIndex(_controller.selectedIndex)),
-              leading: IconButton(
+      appBar: AppBar(
+        backgroundColor: canvasColor,
+        title: const Text('Portfolio'),
+        leading: isSmallScreen
+            ? IconButton(
                 onPressed: () {
-                  // if (!Platform.isAndroid && !Platform.isIOS) {
-                  //   _controller.setExtended(true);
-                  // }
                   _key.currentState?.openDrawer();
                 },
                 icon: const Icon(Icons.menu),
-              ),
-            )
-          : null,
-      drawer: SideBar(controller: _controller),
-
+              )
+            : null,
+      ),
+      drawer: isSmallScreen ? SideBar(controller: _controller) : null,
       body: Row(
         children: [
           if (!isSmallScreen)

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 class SideBar extends StatelessWidget {
@@ -23,6 +24,7 @@ class SideBar extends StatelessWidget {
     //   ),
     // );
     return SidebarX(
+      showToggleButton: false,
       controller: _controller,
       theme: SidebarXTheme(
         margin: const EdgeInsets.all(10),
@@ -31,7 +33,8 @@ class SideBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         hoverColor: scaffoldBackgroundColor,
-        textStyle: TextStyle(color: Colors.white.withOpacity(0.7)),
+
+        textStyle: const TextStyle(color: Colors.white),
         selectedTextStyle: const TextStyle(color: Colors.white),
         hoverTextStyle: const TextStyle(
           color: Colors.white,
@@ -43,23 +46,23 @@ class SideBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: canvasColor),
         ),
-        selectedItemDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-            color: actionColor.withOpacity(0.37),
-          ),
-          gradient: const LinearGradient(
-            colors: [accentCanvasColor, canvasColor],
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.28),
-              blurRadius: 30,
-            )
-          ],
-        ),
-        iconTheme: IconThemeData(
-          color: Colors.white.withOpacity(0.7),
+        // selectedItemDecoration: BoxDecoration(
+        //   borderRadius: BorderRadius.circular(10),
+        //   border: Border.all(
+        //     color: actionColor.withOpacity(0.37),
+        //   ),
+        //   gradient: const LinearGradient(
+        //     colors: [accentCanvasColor, canvasColor],
+        //   ),
+        //   boxShadow: [
+        //     BoxShadow(
+        //       color: Colors.black.withOpacity(0.28),
+        //       blurRadius: 30,
+        //     )
+        //   ],
+        // ),
+        iconTheme: const IconThemeData(
+          color: Colors.white,
           size: 20,
         ),
         selectedIconTheme: const IconThemeData(
@@ -89,6 +92,7 @@ class SideBar extends StatelessWidget {
           label: 'About',
           onTap: () {
             scrollToWidget(const GlobalObjectKey('about'));
+            dismissDrawer(context);
           },
         ),
         SidebarXItem(
@@ -96,6 +100,7 @@ class SideBar extends StatelessWidget {
           label: 'Skills',
           onTap: () {
             scrollToWidget(const GlobalObjectKey('skills'));
+            dismissDrawer(context);
           },
         ),
         SidebarXItem(
@@ -103,6 +108,7 @@ class SideBar extends StatelessWidget {
           label: 'Experience',
           onTap: () {
             scrollToWidget(const GlobalObjectKey('experience'));
+            dismissDrawer(context);
           },
         ),
         SidebarXItem(
@@ -110,6 +116,7 @@ class SideBar extends StatelessWidget {
           label: 'Projects',
           onTap: () {
             scrollToWidget(const GlobalObjectKey('project'));
+            dismissDrawer(context);
           },
         ),
         SidebarXItem(
@@ -117,28 +124,34 @@ class SideBar extends StatelessWidget {
           label: 'Contact',
           onTap: () {
             scrollToWidget(const GlobalObjectKey('contact'));
+            dismissDrawer(context);
           },
         ),
       ],
     );
   }
-}
 
-void scrollToWidget(GlobalObjectKey widgetKey) {
-  WidgetsBinding.instance.addPostFrameCallback((_) async {
-    final context = widgetKey.currentContext;
-    if (context == null) {
-      debugPrint('Null');
-      return;
+  void scrollToWidget(GlobalObjectKey widgetKey) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final context = widgetKey.currentContext;
+      if (context == null) {
+        debugPrint('Null');
+        return;
+      }
+      await Scrollable.ensureVisible(
+        context,
+        alignment: 0.3, // Positions the widget 30% from the top
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    });
+  }
+
+  void dismissDrawer(BuildContext context) {
+    if (ResponsiveBreakpoints.of(context).smallerThan(TABLET)) {
+      Navigator.of(context).pop();
     }
-
-    await Scrollable.ensureVisible(
-      context,
-      alignment: 0.3, // Positions the widget 30% from the top
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  });
+  }
 }
 
 const primaryColor = Color(0xFF685BFF);

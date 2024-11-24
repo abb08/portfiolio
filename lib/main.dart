@@ -29,19 +29,37 @@ class MyApp extends StatelessWidget {
           const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
         ],
       ),
-      home: HomePage(),
+      debugShowCheckedModeBanner: false,
+      home: const HomePage(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final _controller = SidebarXController(
     selectedIndex: 0,
     extended: true,
   );
+
   final _key = GlobalKey<ScaffoldState>();
+  bool _value = true;
+
+  final WidgetStateProperty<Icon?> thumbIcon =
+      WidgetStateProperty.resolveWith<Icon?>(
+    (Set<WidgetState> states) {
+      if (states.contains(WidgetState.selected)) {
+        return const Icon(Icons.dark_mode_outlined);
+      }
+      return const Icon(Icons.light_mode_outlined);
+    },
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +77,23 @@ class HomePage extends StatelessWidget {
                 icon: const Icon(Icons.menu),
               )
             : null,
+        actions: [
+          FilledButton(
+            onPressed: () {
+              scrollToWidget(const GlobalObjectKey('contact'));
+            },
+            child: const Text('Contact'),
+          ),
+          Switch(
+            value: _value,
+            thumbIcon: thumbIcon,
+            onChanged: (newValue) {
+              setState(() {
+                _value = newValue;
+              });
+            },
+          )
+        ],
       ),
       drawer: isSmallScreen ? SideBar(controller: _controller) : null,
       body: Row(
@@ -73,5 +108,21 @@ class HomePage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void scrollToWidget(GlobalObjectKey widgetKey) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final context = widgetKey.currentContext;
+      if (context == null) {
+        debugPrint('Null');
+        return;
+      }
+      await Scrollable.ensureVisible(
+        context,
+        alignment: 0.3, // Positions the widget 30% from the top
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    });
   }
 }

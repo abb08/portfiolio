@@ -40,6 +40,7 @@ dependencies:
   responsive_framework: ^1.5.1
   sidebarx: ^0.17.1
   visibility_detector: ^0.4.0+2
+  sticky_headers: ^0.3.0+2
 
 dev_dependencies:
   flutter_test:

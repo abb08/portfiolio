@@ -27,7 +27,7 @@ class ExperienceView extends StatelessWidget {
       ),
       content: Container(
         key: const GlobalObjectKey('experience'),
-        color: Colors.tealAccent,
+        color: Colors.blue.shade600,
         child: Text(
           loremIpsum(paragraphs: 4),
         ),

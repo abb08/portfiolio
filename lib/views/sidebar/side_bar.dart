@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/widgets/intro_view.dart';
+import 'package:portfolio/widgets/links_view.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -33,7 +35,6 @@ class SideBar extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         hoverColor: scaffoldBackgroundColor,
-
         textStyle: const TextStyle(color: Colors.white),
         selectedTextStyle: const TextStyle(color: Colors.white),
         hoverTextStyle: const TextStyle(
@@ -76,15 +77,13 @@ class SideBar extends StatelessWidget {
           color: canvasColor,
         ),
       ),
-      footerDivider: divider,
+      headerDivider: divider,
       headerBuilder: (context, extended) {
-        return const SizedBox(
-          height: 100,
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
-            // child: Image.asset('assets/images/avatar.png'),
-          ),
-        );
+        return const IntroView();
+      },
+      footerDivider: divider,
+      footerBuilder: (context, extended) {
+        return const LinksView();
       },
       items: [
         SidebarXItem(

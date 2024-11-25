@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/views/side_bar.dart';
-import 'package:portfolio/views/main_page.dart';
+import 'package:portfolio/views/sidebar/side_bar.dart';
+import 'package:portfolio/views/main_page/main_page.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.deepPurple, brightness: Brightness.dark),
         useMaterial3: true,
       ),
       builder: (context, child) => ResponsiveBreakpoints.builder(
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
           const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
         ],
       ),
+      
       debugShowCheckedModeBanner: false,
       home: const HomePage(),
     );
@@ -67,6 +69,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: _key,
       appBar: AppBar(
+        foregroundColor: Colors.white,
         backgroundColor: canvasColor,
         title: const Text('Portfolio'),
         leading: isSmallScreen

@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:lorem_ipsum/lorem_ipsum.dart';
+import 'package:portfolio/views/skills/header_view.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class SkillsView extends StatelessWidget {
@@ -26,12 +26,13 @@ class SkillsView extends StatelessWidget {
         ),
       ),
       content: Container(
-        key: const GlobalObjectKey('skills'),
-        color: Colors.orangeAccent,
-        child: Text(
-          loremIpsum(paragraphs: 3),
-        ),
-      ),
+          key: const GlobalObjectKey('skills'),
+          color: Colors.orangeAccent,
+          child: const Column(
+            children: [
+              HeaderView(),
+            ],
+          )),
     );
   }
 }

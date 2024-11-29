@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:portfolio/views/skills/header_view.dart';
+import 'package:portfolio/views/skills/skills_grid_view.dart';
 import 'package:sticky_headers/sticky_headers/widget.dart';
 
 class SkillsView extends StatelessWidget {
@@ -27,10 +28,12 @@ class SkillsView extends StatelessWidget {
       ),
       content: Container(
           key: const GlobalObjectKey('skills'),
-          color: Colors.orangeAccent,
-          child: const Column(
+          // color: Colors.orangeAccent,
+          color: const Color(0xFF121212),
+          child: Column(
             children: [
-              HeaderView(),
+              const HeaderView(),
+              SkillsGridView(),
             ],
           )),
     );

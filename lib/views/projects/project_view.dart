@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:lorem_ipsum/lorem_ipsum.dart';
+import 'package:portfolio/views/projects/project_list_view.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
 class ProjectView extends StatelessWidget {
@@ -26,12 +27,9 @@ class ProjectView extends StatelessWidget {
         ),
       ),
       content: Container(
-        key: const GlobalObjectKey('project'),
-        color: Colors.redAccent,
-        child: Text(
-          loremIpsum(paragraphs: 4),
-        ),
-      ),
+          key: const GlobalObjectKey('project'),
+          color: Colors.redAccent,
+          child: const ProjectListView(),),
     );
   }
 }

@@ -29,7 +29,7 @@ class ProjectView extends StatelessWidget {
       content: Container(
           key: const GlobalObjectKey('project'),
           color: Colors.redAccent,
-          child: const ProjectListView(),),
+          child: ProjectListView(),),
     );
   }
 }

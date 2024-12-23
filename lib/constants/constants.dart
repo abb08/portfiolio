@@ -27,8 +27,13 @@ class Skills {
       'I possess strong skills in building high-performance, cross-platform mobile applications using the Flutter framework. I have experience in designing responsive UIs, integrating APIs, managing state with Riverpod, and optimizing app performance.';
 }
 
-class Projects {
-  
-}
+class Projects {}
 
-class Contact {}
+class Contact {
+  static const headings = "Let's Build Something Together!";
+  static const description =
+      "Have a project idea, need a developer, or just want to connect? I'd love to hear from you. Let's create something amazing together!";
+  static const descriptionLocation =
+      "Based in Kathmandu, Nepal, open to remote opportunities.";
+  static const headingsSecondary = "You can reach me at:";
+}

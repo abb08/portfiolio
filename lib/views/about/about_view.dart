@@ -19,7 +19,7 @@ class AboutView extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             alignment: Alignment.centerLeft,
             child: const Text(
-              'About',
+              'About Me',
               style: TextStyle(color: Colors.white),
             ),
           ),

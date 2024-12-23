@@ -25,6 +25,7 @@ class SideBar extends StatelessWidget {
     //     ],
     //   ),
     // );
+
     return SidebarX(
       showToggleButton: false,
       controller: _controller,
@@ -71,9 +72,9 @@ class SideBar extends StatelessWidget {
           size: 20,
         ),
       ),
-      extendedTheme: const SidebarXTheme(
-        width: 200,
-        decoration: BoxDecoration(
+      extendedTheme: SidebarXTheme(
+        width: getWidth(context),
+        decoration: const BoxDecoration(
           color: canvasColor,
         ),
       ),
@@ -150,6 +151,25 @@ class SideBar extends StatelessWidget {
     if (ResponsiveBreakpoints.of(context).smallerThan(TABLET)) {
       Navigator.of(context).pop();
     }
+  }
+
+  double getWidth(BuildContext context) {
+    final isMobile = ResponsiveBreakpoints.of(context).isMobile;
+    final isTablet = ResponsiveBreakpoints.of(context).isTablet;
+    final isDesktop = ResponsiveBreakpoints.of(context).largerThan(TABLET);
+
+    final currentWidth = MediaQuery.sizeOf(context).width;
+
+    if (isMobile) {
+      return 200;
+    }
+    if (isTablet) {
+      return currentWidth / 3;
+    }
+    if (isDesktop) {
+      return currentWidth / 2;
+    }
+    return 200;
   }
 }
 

@@ -24,10 +24,15 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => ResponsiveBreakpoints.builder(
         child: child!,
         breakpoints: [
-          const Breakpoint(start: 0, end: 450, name: MOBILE),
-          const Breakpoint(start: 451, end: 800, name: TABLET),
-          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+          // const Breakpoint(start: 0, end: 450, name: MOBILE),
+          // const Breakpoint(start: 451, end: 800, name: TABLET),
+          // const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+          // const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+
+          const Breakpoint(start: 0, end: 599, name: MOBILE),
+          const Breakpoint(start: 600, end: 839, name: TABLET),
+          const Breakpoint(start: 840, end: 1199, name: DESKTOP),
+          const Breakpoint(start: 1200, end: double.infinity, name: '4K'),
         ],
       ),
       debugShowCheckedModeBanner: false,
@@ -98,16 +103,29 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       drawer: isSmallScreen ? SideBar(controller: _controller) : null,
-      body: Row(
-        children: [
-          if (!isSmallScreen)
-            SideBar(
-              controller: _controller,
-            ),
-          MainPage(
-            controller: _controller,
+      body: MaxWidthBox(
+        maxWidth: 1200,
+        backgroundColor: const Color(0xFF121212),
+        child: ResponsiveScaledBox(
+          width: ResponsiveValue<double?>(context, conditionalValues: [
+            const Condition.equals(name: MOBILE, value: 599),
+            const Condition.between(start: 600, end: 839, value: 839),
+            const Condition.between(start: 840, end: 1200, value: 1200),
+            // There are no conditions for width over 1200
+            // because the `maxWidth` is set to 1200 via the MaxWidthBox.
+          ]).value,
+          child: Row(
+            children: [
+              if (!isSmallScreen)
+                SideBar(
+                  controller: _controller,
+                ),
+              MainPage(
+                controller: _controller,
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

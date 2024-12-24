@@ -80,7 +80,7 @@ class SideBar extends StatelessWidget {
       ),
       headerDivider: divider,
       headerBuilder: (context, extended) {
-        return const IntroView();
+        return IntroView();
       },
       footerDivider: divider,
       footerBuilder: (context, extended) {

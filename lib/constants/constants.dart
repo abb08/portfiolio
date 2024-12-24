@@ -14,7 +14,11 @@ class Links {
 }
 
 class About {
-  static const aboutMe = '';
+  static const aboutMe = '''Hi, I'm Prabesh Pudasaini, a passionate mobile app developer specializing in Flutter. With a strong foundation in cross-platform development and a keen eye for user-centric design, I strive to create seamless and intuitive mobile experiences.
+
+I love the challenge of turning ideas into functional, responsive apps that work beautifully on both Android and iOS. From crafting efficient code to debugging and polishing designs, every part of the development process excites me.
+
+In addition to Flutter and Dart, I have experience working with tools like Firebase, REST APIs, and Git, which help me build scalable, high-quality applications.''';
 }
 
 class Experience {}

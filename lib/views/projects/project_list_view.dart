@@ -24,8 +24,8 @@ class ProjectListView extends StatelessWidget {
       description:
           'An end-to-end encrypted chat app designed for privacy-first communication. Stay connected with friends, family, and teams while keeping your messages and data safe from prying eyes. The End-to-End Encrypted Messaging Mobile App is built using Flutter and Firebase.',
       builtWith: [
-        'Java',
-        'XML',
+        'Dart',
+        'Flutter',
         'Firebase',
         'Material UI',
       ],
@@ -99,21 +99,11 @@ class ProjectListView extends StatelessWidget {
                             color: Colors.grey[700],
                           ),
                         ),
-                        // Add a row with two buttons spaced apart and aligned to the right side of the card
+                        // Adds Chips
                         Wrap(
                           children: List<Widget>.generate(
                             projects[index].builtWith.length,
                             (chipIndex) {
-                              // return Padding(
-                              //   padding: const EdgeInsets.all(8.0),
-                              //   child: Container(
-                              //       padding: const EdgeInsets.all(8.0),
-                              //       decoration: BoxDecoration(
-                              //         border: Border.all(),
-                              //         borderRadius: BorderRadius.circular(20),
-                              //       ),
-                              //       child: Text(projects[0].builtWith[chipIndex])),
-                              // );
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Chip(

@@ -10,10 +10,12 @@ class ProjectView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StickyHeader(
-      header: const StickyHeaderView(title: 'Projects',),
+      header: const StickyHeaderView(
+        title: 'Projects',
+      ),
       content: Container(
+        color: Theme.of(context).colorScheme.surface,
         key: const GlobalObjectKey('project'),
-        color: Colors.redAccent,
         child: ProjectListView(),
       ),
     );

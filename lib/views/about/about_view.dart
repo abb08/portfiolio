@@ -13,8 +13,8 @@ class AboutView extends StatelessWidget {
         title: 'About',
       ),
       content: Container(
+        color: Theme.of(context).colorScheme.surface,
         key: const GlobalObjectKey('about'),
-        color: Colors.lightGreen,
         child: const Text(
           About.aboutMe,
         ),

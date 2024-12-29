@@ -33,6 +33,7 @@
     "workbench.layoutControl.enabled": false,
     "inlineChat.mode": "preview",
     "cSpell.ignoreWords": [
+        "LTRB",
         "dont"
     ],
     "debug.internalConsoleOptions": "openOnSessionStart",

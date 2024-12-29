@@ -5,7 +5,8 @@ import 'package:url_launcher/url_launcher.dart';
 class IntroView extends StatelessWidget {
   IntroView({super.key});
 
-  final Uri _url = Uri.parse('https://flutter.dev');
+  final Uri _url = Uri.parse(
+      'https://github.com/prabeshpudasaini/Portfolio/blob/main/assets/pdf/Prabesh_Pudasaini_Flutter_Developer_Resume.pdf');
 
   Future<void> _launchUrl() async {
     if (!await launchUrl(_url)) {

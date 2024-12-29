@@ -14,9 +14,8 @@ class SkillsView extends StatelessWidget {
         title: 'Skills',
       ),
       content: Container(
+          color: Theme.of(context).colorScheme.surface,
           key: const GlobalObjectKey('skills'),
-          // color: Colors.orangeAccent,
-          color: const Color(0xFF121212),
           child: const Column(
             children: [
               HeaderView(),

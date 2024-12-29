@@ -14,75 +14,70 @@ class SideBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Container(
-    //   color: Colors.lightBlue,
-    //   width: MediaQuery.of(context).size.width / 2,
-    //   child: Column(
-    //     children: [
-    //       const IntroView(),
-    //       const LinksView(),
-    //       MenuView(),
-    //     ],
-    //   ),
-    // );
-
     return SidebarX(
       showToggleButton: false,
       controller: _controller,
       theme: SidebarXTheme(
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: canvasColor,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(20),
         ),
-        hoverColor: scaffoldBackgroundColor,
-        textStyle: const TextStyle(color: Colors.white),
-        selectedTextStyle: const TextStyle(color: Colors.white),
-        hoverTextStyle: const TextStyle(
-          color: Colors.white,
+        hoverColor: Theme.of(context).colorScheme.secondary,
+        textStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+        // selectedTextStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+        hoverTextStyle: TextStyle(
+          color: Theme.of(context).colorScheme.onSecondary,
           fontWeight: FontWeight.w500,
         ),
         itemTextPadding: const EdgeInsets.only(left: 30),
         selectedItemTextPadding: const EdgeInsets.only(left: 30),
         itemDecoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: canvasColor),
+          border: Border.all(color: Theme.of(context).colorScheme.surface),
         ),
         // selectedItemDecoration: BoxDecoration(
         //   borderRadius: BorderRadius.circular(10),
         //   border: Border.all(
-        //     color: actionColor.withOpacity(0.37),
+        //     color: Theme.of(context).colorScheme.outline.withOpacity(0.37),
         //   ),
-        //   gradient: const LinearGradient(
-        //     colors: [accentCanvasColor, canvasColor],
+        //   gradient: LinearGradient(
+        //     colors: [
+        //       Theme.of(context).colorScheme.secondary,
+        //       Theme.of(context).colorScheme.surface
+        //     ],
         //   ),
         //   boxShadow: [
         //     BoxShadow(
-        //       color: Colors.black.withOpacity(0.28),
+        //       color: Theme.of(context).colorScheme.shadow,
         //       blurRadius: 30,
         //     )
         //   ],
         // ),
-        iconTheme: const IconThemeData(
-          color: Colors.white,
+        iconTheme: IconThemeData(
+          color: Theme.of(context).colorScheme.onSurface,
           size: 20,
         ),
-        selectedIconTheme: const IconThemeData(
-          color: Colors.white,
-          size: 20,
-        ),
+        // selectedIconTheme: const IconThemeData(
+        //   color: Theme.of(context).colorScheme.onSurface,
+        //   size: 20,
+        // ),
       ),
       extendedTheme: SidebarXTheme(
         width: getWidth(context),
-        decoration: const BoxDecoration(
-          color: canvasColor,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
         ),
       ),
-      headerDivider: divider,
+      headerDivider: Divider(
+          color: Theme.of(context).colorScheme.outline.withOpacity(0.3),
+          height: 1),
       headerBuilder: (context, extended) {
         return IntroView();
       },
-      footerDivider: divider,
+      footerDivider: Divider(
+          color: Theme.of(context).colorScheme.outline.withOpacity(0.3),
+          height: 1),
       footerBuilder: (context, extended) {
         return const LinksView();
       },
@@ -172,11 +167,3 @@ class SideBar extends StatelessWidget {
     return 200;
   }
 }
-
-const primaryColor = Color(0xFF685BFF);
-const canvasColor = Color(0xFF2E2E48);
-const scaffoldBackgroundColor = Color(0xFF464667);
-const accentCanvasColor = Color(0xFF3E3E61);
-const white = Colors.white;
-final actionColor = const Color(0xFF5F5FA7).withOpacity(0.6);
-final divider = Divider(color: white.withOpacity(0.3), height: 1);

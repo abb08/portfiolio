@@ -14,8 +14,8 @@ class ContactView extends StatelessWidget {
         title: 'Contact',
       ),
       content: Container(
+          color: Theme.of(context).colorScheme.surface,
           key: const GlobalObjectKey('contact'),
-          color: Colors.purpleAccent,
           child: Column(
             children: [
               const Text(Contact.headings),

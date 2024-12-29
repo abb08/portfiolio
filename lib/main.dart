@@ -1,42 +1,72 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio/theme/theme.dart';
 import 'package:portfolio/views/sidebar/side_bar.dart';
 import 'package:portfolio/views/main_page/main_page.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final savedThemeMode = await AdaptiveTheme.getThemeMode();
+  runApp(MyApp(savedThemeMode: savedThemeMode));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, this.savedThemeMode});
+
+  final AdaptiveThemeMode? savedThemeMode;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepPurple, brightness: Brightness.dark),
-        useMaterial3: true,
-      ),
-      builder: (context, child) => ResponsiveBreakpoints.builder(
-        child: child!,
-        breakpoints: [
-          // const Breakpoint(start: 0, end: 450, name: MOBILE),
-          // const Breakpoint(start: 451, end: 800, name: TABLET),
-          // const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-          // const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+    return AdaptiveTheme(
+      light: AppTheme.light,
+      dark: AppTheme.dark,
+      initial: savedThemeMode ?? AdaptiveThemeMode.dark,
+      debugShowFloatingThemeButton: true,
+      builder: (theme, darkTheme) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          // theme: ThemeData(
+          //   colorScheme: ColorScheme.fromSeed(
+          //     seedColor: Colors.deepPurple,
+          //     brightness: Brightness.dark,
+          //   ),
+          //   useMaterial3: true,
+          // ),
+          // theme: ThemeData(
+          //   useMaterial3: true,
+          //   colorScheme: lightColorScheme,
+          // ),
+          // darkTheme: ThemeData(
+          //   useMaterial3: true,
+          //   colorScheme: darkColorScheme,
+          // ),
+          // theme: AppTheme.light,
+          // darkTheme: AppTheme.dark,
+          // themeMode: ThemeMode.dark,
+          theme: theme,
+          darkTheme: darkTheme,
 
-          const Breakpoint(start: 0, end: 599, name: MOBILE),
-          const Breakpoint(start: 600, end: 839, name: TABLET),
-          const Breakpoint(start: 840, end: 1199, name: DESKTOP),
-          const Breakpoint(start: 1200, end: double.infinity, name: '4K'),
-        ],
-      ),
-      debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+          builder: (context, child) => ResponsiveBreakpoints.builder(
+            child: child!,
+            breakpoints: [
+              // const Breakpoint(start: 0, end: 450, name: MOBILE),
+              // const Breakpoint(start: 451, end: 800, name: TABLET),
+              // const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+              // const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+
+              const Breakpoint(start: 0, end: 599, name: MOBILE),
+              const Breakpoint(start: 600, end: 839, name: TABLET),
+              const Breakpoint(start: 840, end: 1199, name: DESKTOP),
+              const Breakpoint(start: 1200, end: double.infinity, name: '4K'),
+            ],
+          ),
+          debugShowCheckedModeBanner: false,
+          home: const HomePage(),
+        );
+      },
     );
   }
 }
@@ -55,7 +85,6 @@ class _HomePageState extends State<HomePage> {
   );
 
   final _key = GlobalKey<ScaffoldState>();
-  bool _value = true;
 
   final WidgetStateProperty<Icon?> thumbIcon =
       WidgetStateProperty.resolveWith<Icon?>(
@@ -73,8 +102,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: _key,
       appBar: AppBar(
-        foregroundColor: Colors.white,
-        backgroundColor: canvasColor,
+        foregroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         title: const Text('Portfolio'),
         leading: isSmallScreen
             ? IconButton(
@@ -92,12 +121,14 @@ class _HomePageState extends State<HomePage> {
             child: const Text('Contact'),
           ),
           Switch(
-            value: _value,
+            value: AdaptiveTheme.of(context).mode.isDark,
             thumbIcon: thumbIcon,
-            onChanged: (newValue) {
-              setState(() {
-                _value = newValue;
-              });
+            onChanged: (value) {
+              if (value) {
+                AdaptiveTheme.of(context).setDark();
+              } else {
+                AdaptiveTheme.of(context).setLight();
+              }
             },
           )
         ],
@@ -105,7 +136,7 @@ class _HomePageState extends State<HomePage> {
       drawer: isSmallScreen ? SideBar(controller: _controller) : null,
       body: MaxWidthBox(
         maxWidth: 1200,
-        backgroundColor: const Color(0xFF121212),
+        backgroundColor: Theme.of(context).colorScheme.surface,
         child: ResponsiveScaledBox(
           width: ResponsiveValue<double?>(context, conditionalValues: [
             const Condition.equals(name: MOBILE, value: 599),

@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/models/projects.dart';
 
@@ -74,7 +75,7 @@ class ProjectListView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   // Display an image at the top of the card that fills the width of the card and has a height of 160 pixels
-                  getImage(projects[index].image),
+                  getImage(projects[index].image, context),
                   // Add a container with padding that contains the card's title, text, and buttons
                   Container(
                     padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
@@ -127,12 +128,16 @@ class ProjectListView extends StatelessWidget {
   }
 }
 
-getImage(String name) {
+getImage(String name, BuildContext context) {
+  bool isDarkMode = AdaptiveTheme.of(context).mode.isDark;
   return Image.asset(
     'assets/images/$name',
     // height: 160,
     width: double.infinity,
     fit: BoxFit.contain,
+
+    color: isDarkMode ? Colors.black12 : null,
+    colorBlendMode: isDarkMode ? BlendMode.darken : null,
   );
 }
 
@@ -216,14 +221,4 @@ class MyTextSample {
   static TextStyle? overline(BuildContext context) {
     return Theme.of(context).textTheme.labelSmall;
   }
-}
-
-class MyStringsSample {
-  static const String lorem_ipsum =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie.  Fusce quis mauris a enim sollicitudin"
-      "\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie.  Fusce quis mauris a enim sollicitudin";
-  static const String middle_lorem_ipsum =
-      "Flutter is an open-source UI software development kit created by Google. It is used to develop cross-platform applications for Android, iOS, Linux, macOS, Windows, Google Fuchsia, and the web from a single codebase.";
-  static const String card_text =
-      "Cards are surfaces that display content and actions on a single topic.Cards are surfaces that display content and actions on a single topic.Cards are surfaces that display content and actions on a single topic.Cards are surfaces that display content and actions on a single topic.";
 }

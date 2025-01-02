@@ -11,34 +11,37 @@ class HeaderView extends StatelessWidget {
     return Column(
       children: [
         Text(
-          Skills.headings,
+          Contact.headings,
           style: textTheme.headlineSmall?.copyWith(
             color: colorScheme.primary,
             fontWeight: FontWeight.bold,
           ),
         ),
+        const SizedBox(width: 8),
+        Text(
+          Contact.description,
+          style: textTheme.bodyMedium?.copyWith(
+            color: colorScheme.onSurface,
+          ),
+        ),
         const SizedBox(height: 16),
-        Text(
-          Skills.descriptionHead,
-          style: textTheme.bodyLarge?.copyWith(
-            color: colorScheme.onSurface,
-          ),
-        ),
-        Text(
-          Skills.descriptionPrimary,
-          textAlign: TextAlign.justify,
-          style: textTheme.bodyLarge?.copyWith(
-            color: colorScheme.onSurface,
-            height: 1.5,
-          ),
-        ),
-        Text(
-          Skills.descriptionSecondary,
-          textAlign: TextAlign.center,
-          style: textTheme.bodyLarge?.copyWith(
-            color: colorScheme.primary,
-            fontWeight: FontWeight.w600,
-          ),
+        Row(
+          children: [
+            Icon(
+              Icons.location_on,
+              color: colorScheme.primary,
+              size: 20,
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Text(
+                Contact.descriptionLocation,
+                style: textTheme.bodySmall?.copyWith(
+                  color: colorScheme.onSurface,
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );

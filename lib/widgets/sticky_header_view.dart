@@ -9,18 +9,20 @@ class StickyHeaderView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
     return ClipRRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
         child: Container(
-          height: 50.0,
-          // color: Theme.of(context).colorScheme.surface,
+          height: 70.0,
+          // color: colorScheme.surface,
           margin: const EdgeInsets.only(bottom: 2.0, top: 2.0),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surface,
+            color: colorScheme.surface,
             boxShadow: [
               BoxShadow(
-                color: Theme.of(context).colorScheme.shadow,
+                color: colorScheme.shadow,
                 offset: const Offset(0.0, 2.0), //(x,y)
                 spreadRadius: 5,
                 blurRadius: 0,
@@ -33,7 +35,9 @@ class StickyHeaderView extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             title,
-            // style: const TextStyle(color: Colors.white),
+            style: textTheme.displaySmall?.copyWith(
+              color: colorScheme.primary,
+            ),
           ),
         ),
       ),

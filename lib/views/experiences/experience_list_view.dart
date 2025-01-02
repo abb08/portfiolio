@@ -1,91 +1,117 @@
 import 'package:flutter/material.dart';
-import 'package:lorem_ipsum/lorem_ipsum.dart';
-import 'package:portfolio/models/experience.dart';
 
-class ExperienceListView extends StatelessWidget {
-  ExperienceListView({super.key});
+import 'package:portfolio/constants/experiences.dart';
+import 'package:portfolio/widgets/card_view.dart';
 
-  final List<Experience> experiences = [
-    Experience(
-      date: '2024-01-01',
-      jobTitle: 'Flutter Developer',
-      companyName: 'ABC Technology',
-      jobDescription: loremIpsum(words: 40),
-      toolsUsed: const [
-        'Dart',
-        'Flutter',
-        'Firebase',
-        'Material UI',
-      ],
-      link: '',
-    ),
-  ];
+import 'package:portfolio/widgets/hover_animated_card.dart';
+
+class ExperienceListView extends StatefulWidget {
+  const ExperienceListView({super.key});
 
   @override
+  State<ExperienceListView> createState() => _ExperienceListViewState();
+}
+
+class _ExperienceListViewState extends State<ExperienceListView> {
+  @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
     return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: experiences.length,
       itemBuilder: (context, index) {
-        return Card(
-          // Define the shape of the card
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4),
-          ),
-          // Define how the card's content should be clipped
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          // Define the child widget of the card
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              // Add padding around the row widget
-              Padding(
-                padding: const EdgeInsets.all(15),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(experiences[index].date),
-                    // Add some spacing
-                    Container(width: 20),
-                    // Add an expanded widget to take up the remaining horizontal space
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          // Add some spacing between the top of the card and the title
-                          // Container(height: 5),
-                          // Add a title widget
-                          Text(experiences[index].jobTitle),
-                          // Add some spacing between the title and the subtitle
-                          Container(height: 5),
-                          // Add a subtitle widget
-                          Text(experiences[index].companyName),
-                          // Add some spacing between the subtitle and the text
-                          Container(height: 10),
-                          // Add a text widget to display some text
-                          Text(experiences[index].jobDescription),
-                          // Adds Chips
-                          Wrap(
-                            children: List<Widget>.generate(
-                              experiences[index].toolsUsed.length,
-                              (chipIndex) {
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Chip(
-                                    label: Text(experiences[index]
-                                        .toolsUsed[chipIndex]),
-                                  ),
-                                );
-                              },
-                            ).toList(),
-                          ),
-                        ],
+        return HoverAnimatedCard(
+          child: CardView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        experiences[index].date,
+                        style: textTheme.bodyMedium?.copyWith(
+                          color:
+                              colorScheme.onSecondaryContainer.withOpacity(0.8),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                      // Add some spacing
+                      const SizedBox(width: 20),
+                      // Add an expanded widget to take up the remaining horizontal space
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            // Add a title widget
+                            Text(
+                              experiences[index].jobTitle,
+                              style: textTheme.titleMedium?.copyWith(
+                                color: colorScheme.onSecondaryContainer,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            // Add some spacing between the title and the subtitle
+                            const SizedBox(height: 5),
+                            // Add a subtitle widget
+                            Text(
+                              experiences[index].companyName,
+                              style: textTheme.bodyMedium?.copyWith(
+                                color: colorScheme.onSecondaryContainer
+                                    .withOpacity(0.8),
+                              ),
+                            ),
+                            // Add some spacing between the subtitle and the text
+                            const SizedBox(height: 10),
+                            // Add a text widget to display some text
+                            Text(
+                              experiences[index].jobDescription,
+                              textAlign: TextAlign.justify,
+                              style: textTheme.bodyLarge?.copyWith(
+                                color: colorScheme.onSecondaryContainer,
+                                height: 1.5, // Line height for readability
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+
+                            // Adds Chips
+                            Wrap(
+                              spacing: 8.0, // Horizontal spacing between chips
+                              runSpacing:
+                                  4.0, // Vertical spacing between chip rows
+                              children: List<Widget>.generate(
+                                experiences[index].toolsUsed.length,
+                                (chipIndex) {
+                                  return Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Chip(
+                                      backgroundColor:
+                                          colorScheme.primaryContainer,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      label: Text(
+                                        experiences[index].toolsUsed[chipIndex],
+                                        style: textTheme.bodySmall?.copyWith(
+                                          color: colorScheme.onPrimaryContainer,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).toList(),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         );
       },

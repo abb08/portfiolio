@@ -13,15 +13,20 @@ class SkillsView extends StatelessWidget {
       header: const StickyHeaderView(
         title: 'Skills',
       ),
-      content: Container(
+      content: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
+        child: Container(
           color: Theme.of(context).colorScheme.surface,
           key: const GlobalObjectKey('skills'),
           child: const Column(
             children: [
               HeaderView(),
+              SizedBox(height: 16),
               SkillsGridView(),
             ],
-          )),
+          ),
+        ),
+      ),
     );
   }
 }

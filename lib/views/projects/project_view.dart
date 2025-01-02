@@ -13,10 +13,13 @@ class ProjectView extends StatelessWidget {
       header: const StickyHeaderView(
         title: 'Projects',
       ),
-      content: Container(
-        color: Theme.of(context).colorScheme.surface,
-        key: const GlobalObjectKey('project'),
-        child: ProjectListView(),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
+        child: Container(
+          color: Theme.of(context).colorScheme.surface,
+          key: const GlobalObjectKey('project'),
+          child: const ProjectListView(),
+        ),
       ),
     );
   }

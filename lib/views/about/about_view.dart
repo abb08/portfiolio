@@ -8,15 +8,24 @@ class AboutView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
     return StickyHeader(
       header: const StickyHeaderView(
         title: 'About',
       ),
-      content: Container(
-        color: Theme.of(context).colorScheme.surface,
-        key: const GlobalObjectKey('about'),
-        child: const Text(
-          About.aboutMe,
+      content: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+        child: Container(
+          color: Theme.of(context).colorScheme.surface,
+          key: const GlobalObjectKey('about'),
+          child: Text(
+            About.aboutMe,
+            style: textTheme.bodyLarge?.copyWith(
+              color: colorScheme.onSurface,
+            ),
+            textAlign: TextAlign.justify,
+          ),
         ),
       ),
     );

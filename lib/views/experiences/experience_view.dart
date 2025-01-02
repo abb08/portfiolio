@@ -12,11 +12,13 @@ class ExperienceView extends StatelessWidget {
       header: const StickyHeaderView(
         title: 'Experience',
       ),
-      content: Container(
-        color: Theme.of(context).colorScheme.surface,
-
-        key: const GlobalObjectKey('experience'),
-        child: ExperienceListView(),
+      content: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
+        child: Container(
+          color: Theme.of(context).colorScheme.surface,
+          key: const GlobalObjectKey('experience'),
+          child: const ExperienceListView(),
+        ),
       ),
     );
   }

@@ -49,5 +49,6 @@
         "editor.wordBasedSuggestions": "off"
     },
     "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 5000
+    "files.autoSaveDelay": 5000,
+    "editor.wordWrap": "wordWrapColumn"
 }

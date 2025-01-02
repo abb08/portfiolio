@@ -14,70 +14,71 @@ class SideBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    // final textTheme = Theme.of(context).textTheme;
+
     return SidebarX(
       showToggleButton: false,
       controller: _controller,
       theme: SidebarXTheme(
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
+          color: colorScheme.surface,
           borderRadius: BorderRadius.circular(20),
         ),
-        hoverColor: Theme.of(context).colorScheme.secondary,
-        textStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface),
-        // selectedTextStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface),
+        hoverColor: colorScheme.secondary,
+        textStyle: TextStyle(color: colorScheme.onSurface),
+        // selectedTextStyle: TextStyle(color: colorScheme.onSurface),
         hoverTextStyle: TextStyle(
-          color: Theme.of(context).colorScheme.onSecondary,
+          color: colorScheme.onSecondary,
           fontWeight: FontWeight.w500,
         ),
         itemTextPadding: const EdgeInsets.only(left: 30),
         selectedItemTextPadding: const EdgeInsets.only(left: 30),
         itemDecoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Theme.of(context).colorScheme.surface),
+          border: Border.all(color: colorScheme.surface),
         ),
         // selectedItemDecoration: BoxDecoration(
         //   borderRadius: BorderRadius.circular(10),
         //   border: Border.all(
-        //     color: Theme.of(context).colorScheme.outline.withOpacity(0.37),
+        //     color: colorScheme.outline.withOpacity(0.37),
         //   ),
         //   gradient: LinearGradient(
         //     colors: [
-        //       Theme.of(context).colorScheme.secondary,
-        //       Theme.of(context).colorScheme.surface
+        //       colorScheme.secondary,
+        //       colorScheme.surface
         //     ],
         //   ),
         //   boxShadow: [
         //     BoxShadow(
-        //       color: Theme.of(context).colorScheme.shadow,
+        //       color: colorScheme.shadow,
         //       blurRadius: 30,
         //     )
         //   ],
         // ),
         iconTheme: IconThemeData(
-          color: Theme.of(context).colorScheme.onSurface,
+          color: colorScheme.onSurface,
           size: 20,
         ),
         // selectedIconTheme: const IconThemeData(
-        //   color: Theme.of(context).colorScheme.onSurface,
+        //   color: colorScheme.onSurface,
         //   size: 20,
         // ),
       ),
       extendedTheme: SidebarXTheme(
         width: getWidth(context),
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
+          color: colorScheme.surface,
         ),
       ),
-      headerDivider: Divider(
-          color: Theme.of(context).colorScheme.outline.withOpacity(0.3),
-          height: 1),
+      headerDivider:
+          Divider(color: colorScheme.outline.withOpacity(0.3), height: 1),
       headerBuilder: (context, extended) {
         return IntroView();
       },
-      footerDivider: Divider(
-          color: Theme.of(context).colorScheme.outline.withOpacity(0.3),
-          height: 1),
+      footerDivider:
+          Divider(color: colorScheme.outline.withOpacity(0.3), height: 1),
       footerBuilder: (context, extended) {
         return const LinksView();
       },

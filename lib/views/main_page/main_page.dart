@@ -4,23 +4,22 @@ import 'package:portfolio/views/contact/contact_view.dart';
 import 'package:portfolio/views/experiences/experience_view.dart';
 import 'package:portfolio/views/projects/project_view.dart';
 import 'package:portfolio/views/skills/skills_view.dart';
-import 'package:sidebarx/sidebarx.dart';
 
 class MainPage extends StatelessWidget {
-  MainPage({
+  const MainPage({
     super.key,
-    required this.controller,
+    // required this.controller,
   });
 
-  final SidebarXController controller;
-  final _scrollController = ScrollController();
+  // final SidebarXController controller;
+  // final _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return const Expanded(
       child: SingleChildScrollView(
-        controller: _scrollController,
-        child: const Column(
+        // controller: _scrollController,
+        child: Column(
           children: [
             AboutView(),
             SkillsView(),

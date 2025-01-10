@@ -45,6 +45,7 @@ dependencies:
   url_launcher: ^6.3.1
   flex_color_scheme: ^8.0.2
   adaptive_theme: ^3.6.0
+  flutter_side_menu: ^0.5.41
 
 dev_dependencies:
   flutter_test:

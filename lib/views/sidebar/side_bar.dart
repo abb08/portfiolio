@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/widgets/intro_view.dart';
-import 'package:portfolio/widgets/links_view.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:sidebarx/sidebarx.dart';
 
@@ -79,12 +78,11 @@ class SideBar extends StatelessWidget {
       },
       footerDivider:
           Divider(color: colorScheme.outline.withOpacity(0.3), height: 1),
-      footerBuilder: (context, extended) {
-        return const LinksView();
-      },
+      // footerBuilder: (context, extended) {
+      //   return const LinksView();
+      // },
       items: [
         SidebarXItem(
-          icon: Icons.home,
           label: 'About',
           onTap: () {
             scrollToWidget(const GlobalObjectKey('about'));
@@ -92,7 +90,6 @@ class SideBar extends StatelessWidget {
           },
         ),
         SidebarXItem(
-          icon: Icons.search,
           label: 'Skills',
           onTap: () {
             scrollToWidget(const GlobalObjectKey('skills'));
@@ -100,7 +97,6 @@ class SideBar extends StatelessWidget {
           },
         ),
         SidebarXItem(
-          icon: Icons.people,
           label: 'Experience',
           onTap: () {
             scrollToWidget(const GlobalObjectKey('experience'));
@@ -108,7 +104,6 @@ class SideBar extends StatelessWidget {
           },
         ),
         SidebarXItem(
-          icon: Icons.favorite,
           label: 'Projects',
           onTap: () {
             scrollToWidget(const GlobalObjectKey('project'));
@@ -116,7 +111,6 @@ class SideBar extends StatelessWidget {
           },
         ),
         SidebarXItem(
-          icon: Icons.favorite,
           label: 'Contact',
           onTap: () {
             scrollToWidget(const GlobalObjectKey('contact'));

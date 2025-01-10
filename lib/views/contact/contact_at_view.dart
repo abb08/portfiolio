@@ -19,30 +19,17 @@ class ContactAtView extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        GestureDetector(
-          onTap: () {},
-          child: HoverAnimatedWidget(
-            scaleFactor: 1.2,
-            duration: const Duration(milliseconds: 200),
-            defaultTextStyle: textTheme.bodySmall?.copyWith(
-              color: colorScheme.onSurface,
-            ),
-            hoverTextStyle: textTheme.bodySmall?.copyWith(
-              color: colorScheme.primary,
-            ),
-            defaultIconColor: colorScheme.onSurface,
-            hoverIconColor: colorScheme.primary,
-            onTap: () {
-              // Use url_launcher to open the URL
-            },
-            child: const Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.email),
-                SizedBox(width: 10),
-                Text("youremail@example.com"),
-              ],
-            ),
+        HoverAnimatedWidget(
+          onTap: () {
+            // Use url_launcher to open the URL
+          },
+          child: const Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.email),
+              SizedBox(width: 10),
+              Text("youremail@example.com"),
+            ],
           ),
         ),
         const SizedBox(height: 10),
@@ -50,14 +37,12 @@ class ContactAtView extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             _buildSocialMediaIcon(
-              context,
               icon: FontAwesomeIcons.github,
               label: 'GitHub',
               url: 'https://github.com/your-profile',
             ),
             const SizedBox(width: 16),
             _buildSocialMediaIcon(
-              context,
               icon: FontAwesomeIcons.linkedin,
               label: 'LinkedIn',
               url: 'https://linkedin.com/in/your-profile',
@@ -69,26 +54,12 @@ class ContactAtView extends StatelessWidget {
   }
 
   // Helper method to build a social media icon with hover animations
-  Widget _buildSocialMediaIcon(
-    BuildContext context, {
+  Widget _buildSocialMediaIcon({
     required IconData icon,
     required String label,
     required String url,
   }) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final textTheme = Theme.of(context).textTheme;
-
     return HoverAnimatedWidget(
-      scaleFactor: 1.2,
-      duration: const Duration(milliseconds: 200),
-      defaultTextStyle: textTheme.bodySmall?.copyWith(
-        color: colorScheme.onSurface,
-      ),
-      hoverTextStyle: textTheme.bodySmall?.copyWith(
-        color: colorScheme.primary,
-      ),
-      defaultIconColor: colorScheme.onSurface,
-      hoverIconColor: colorScheme.primary,
       onTap: () {
         // Use url_launcher to open the URL
       },

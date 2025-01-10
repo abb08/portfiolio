@@ -1,16 +1,15 @@
-import 'package:lorem_ipsum/lorem_ipsum.dart';
-
 class Intro {
   static const name = 'Prabesh Pudasaini';
-  static const position = 'Flutter Developer';
-  final description = loremIpsum(words: 10);
-  static const phoneNo = '';
-  static const email = '';
+  static const position = 'Flutter Developer | Mobile App Enthusiast';
+  static const description =
+      'I specialize in building user-friendly mobile applications with Flutter.';
 }
 
 class Links {
-  static const github = '';
+  static const github = 'https://github.com/prabeshpudasaini';
   static const linkedin = '';
+  static const phoneNo = '';
+  static const email = '';
 }
 
 class About {

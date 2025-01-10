@@ -1,10 +1,12 @@
+import 'dart:ui';
+
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/theme/theme.dart';
-import 'package:portfolio/views/sidebar/side_bar.dart';
 import 'package:portfolio/views/main_page/main_page.dart';
+import 'package:portfolio/views/sidebar/side_navigation_bar.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:sidebarx/sidebarx.dart';
+// import 'package:sidebarx/sidebarx.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +30,7 @@ class MyApp extends StatelessWidget {
       builder: (theme, darkTheme) {
         return MaterialApp(
           title: 'Flutter Demo',
+          scrollBehavior: NoThumbScrollBehavior().copyWith(scrollbars: false),
           // theme: ThemeData(
           //   colorScheme: ColorScheme.fromSeed(
           //     seedColor: Colors.deepPurple,
@@ -79,10 +82,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _controller = SidebarXController(
-    selectedIndex: 0,
-    extended: true,
-  );
+  // final _controller = SidebarXController(
+  //   selectedIndex: 0,
+  //   extended: true,
+  // );
+
+  // final _controller = SideMenuController();
 
   final _key = GlobalKey<ScaffoldState>();
 
@@ -98,12 +103,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    // final textTheme = Theme.of(context).textTheme;
     final isSmallScreen = ResponsiveBreakpoints.of(context).smallerThan(TABLET);
     return Scaffold(
+      backgroundColor: colorScheme.surface,
       key: _key,
       appBar: AppBar(
-        foregroundColor: Theme.of(context).colorScheme.primary,
-        backgroundColor: Theme.of(context).colorScheme.onPrimary,
+        foregroundColor: colorScheme.primary,
+        backgroundColor: colorScheme.onPrimary,
         title: const Text('Portfolio'),
         leading: isSmallScreen
             ? IconButton(
@@ -133,10 +141,12 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      drawer: isSmallScreen ? SideBar(controller: _controller) : null,
+      // drawer: isSmallScreen ? SideBar(controller: _controller) : null,
+      drawer: const SideNavigationBar(),
+
       body: MaxWidthBox(
         maxWidth: 1200,
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: colorScheme.surface,
         child: ResponsiveScaledBox(
           width: ResponsiveValue<double?>(context, conditionalValues: [
             const Condition.equals(name: MOBILE, value: 599),
@@ -148,12 +158,18 @@ class _HomePageState extends State<HomePage> {
           child: Row(
             children: [
               if (!isSmallScreen)
-                SideBar(
-                  controller: _controller,
+                // SideBar(
+                //   controller: _controller,
+                // ),
+                // NavigationSideBar(controller: _controller),
+                const SideNavigationBar(),
+              if (!isSmallScreen)
+                const SizedBox(
+                  width: 10,
                 ),
-              MainPage(
-                controller: _controller,
-              ),
+              const MainPage(
+                  // controller: _controller,
+                  ),
             ],
           ),
         ),
@@ -176,4 +192,14 @@ class _HomePageState extends State<HomePage> {
       );
     });
   }
+}
+
+class NoThumbScrollBehavior extends ScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+        PointerDeviceKind.stylus,
+        PointerDeviceKind.trackpad,
+      };
 }

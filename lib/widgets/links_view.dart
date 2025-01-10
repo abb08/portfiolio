@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:portfolio/constants/constants.dart';
+import 'package:portfolio/controller/launch_url.dart';
 import 'package:portfolio/views/contact/hover_animated_widget.dart';
 
 class LinksView extends StatelessWidget {
@@ -15,13 +17,25 @@ class LinksView extends StatelessWidget {
           _buildIcon(
             icon: FontAwesomeIcons.github,
             hoverMessage: 'Github',
-            url: '',
+            url: Links.github,
           ),
           const SizedBox(width: 16),
           _buildIcon(
             icon: FontAwesomeIcons.linkedin,
             hoverMessage: 'LinkedIn',
-            url: '',
+            url: Links.linkedin,
+          ),
+          const SizedBox(width: 16),
+          _buildIcon(
+            icon: Icons.email,
+            hoverMessage: Links.email,
+            url: Links.email,
+          ),
+          const SizedBox(width: 16),
+          _buildIcon(
+            icon: Icons.phone,
+            hoverMessage: Links.phoneNo,
+            url: Links.phoneNo,
           ),
         ],
       ),
@@ -36,7 +50,14 @@ class LinksView extends StatelessWidget {
   }) {
     return HoverAnimatedWidget(
       onTap: () {
-        // Use url_launcher to open the URL
+        switch (url) {
+          case Links.email:
+            sendEmail();
+          case Links.phoneNo:
+            makePhoneCall();
+          default:
+            launchLink(url);
+        }
       },
       child: Tooltip(
         message: hoverMessage,

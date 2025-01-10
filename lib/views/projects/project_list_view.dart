@@ -1,6 +1,7 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/constants/projects.dart';
+import 'package:portfolio/controller/launch_url.dart';
 import 'package:portfolio/widgets/card_view.dart';
 import 'package:portfolio/widgets/hover_animated_card.dart';
 
@@ -27,7 +28,7 @@ class _ProjectListViewState extends State<ProjectListView> {
               child: InkWell(
                 splashColor: Colors.blue.withAlpha(30),
                 onTap: () {
-                  debugPrint('Card tapped.');
+                  launchLink(projects[index].link);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),

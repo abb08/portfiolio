@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
       builder: (theme, darkTheme) {
         return MaterialApp(
           title: 'Flutter Demo',
+
           scrollBehavior: NoThumbScrollBehavior().copyWith(scrollbars: false),
           // theme: ThemeData(
           //   colorScheme: ColorScheme.fromSeed(
@@ -82,12 +83,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // final _controller = SidebarXController(
-  //   selectedIndex: 0,
-  //   extended: true,
-  // );
+  late ScrollController _scrollController;
 
-  // final _controller = SideMenuController();
+  @override
+  void initState() {
+    _scrollController = ScrollController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   final _key = GlobalKey<ScaffoldState>();
 
@@ -112,7 +120,13 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         foregroundColor: colorScheme.primary,
         backgroundColor: colorScheme.onPrimary,
-        title: const Text('Portfolio'),
+        title: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            onTap: _scrollToTop,
+            child: const Text('Portfolio'),
+          ),
+        ),
         leading: isSmallScreen
             ? IconButton(
                 onPressed: () {
@@ -141,9 +155,7 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      // drawer: isSmallScreen ? SideBar(controller: _controller) : null,
-      drawer: const SideNavigationBar(),
-
+      drawer: isSmallScreen ? const SideNavigationBar() : null,
       body: MaxWidthBox(
         maxWidth: 1200,
         backgroundColor: colorScheme.surface,
@@ -157,19 +169,14 @@ class _HomePageState extends State<HomePage> {
           ]).value,
           child: Row(
             children: [
-              if (!isSmallScreen)
-                // SideBar(
-                //   controller: _controller,
-                // ),
-                // NavigationSideBar(controller: _controller),
-                const SideNavigationBar(),
+              if (!isSmallScreen) const SideNavigationBar(),
               if (!isSmallScreen)
                 const SizedBox(
                   width: 10,
                 ),
-              const MainPage(
-                  // controller: _controller,
-                  ),
+              MainPage(
+                scrollController: _scrollController,
+              ),
             ],
           ),
         ),
@@ -191,6 +198,11 @@ class _HomePageState extends State<HomePage> {
         curve: Curves.easeInOut,
       );
     });
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(0,
+        duration: const Duration(milliseconds: 300), curve: Curves.linear);
   }
 }
 

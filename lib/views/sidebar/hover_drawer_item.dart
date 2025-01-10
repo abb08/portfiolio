@@ -27,6 +27,7 @@ class _HoverDrawerItemState extends State<HoverDrawerItem> {
       child: GestureDetector(
         onTap: widget.onTap,
         child: ListTile(
+          mouseCursor: SystemMouseCursors.click,
           title: Center(
             child: Text(
               widget.label,

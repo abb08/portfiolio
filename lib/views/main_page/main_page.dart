@@ -2,30 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/views/about/about_view.dart';
 import 'package:portfolio/views/contact/contact_view.dart';
 import 'package:portfolio/views/experiences/experience_view.dart';
+import 'package:portfolio/views/heading/heading_view.dart';
 import 'package:portfolio/views/projects/project_view.dart';
 import 'package:portfolio/views/skills/skills_view.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class MainPage extends StatelessWidget {
+  final ScrollController scrollController;
   const MainPage({
     super.key,
-    // required this.controller,
+    required this.scrollController,
   });
-
-  // final SidebarXController controller;
-  // final _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    return const Expanded(
+    final isSmallScreen = ResponsiveBreakpoints.of(context).smallerThan(TABLET);
+    return Expanded(
       child: SingleChildScrollView(
-        // controller: _scrollController,
+        controller: scrollController,
         child: Column(
           children: [
-            AboutView(),
-            SkillsView(),
-            ExperienceView(),
-            ProjectView(),
-            ContactView(),
+            if (isSmallScreen) const HeadingView(),
+            const AboutView(),
+            const SkillsView(),
+            const ExperienceView(),
+            const ProjectView(),
+            const ContactView(),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/constants/constants.dart';
+import 'package:portfolio/controller/launch_url.dart';
 import 'package:portfolio/views/contact/hover_animated_widget.dart';
 
 class ContactAtView extends StatelessWidget {
@@ -21,14 +22,14 @@ class ContactAtView extends StatelessWidget {
         const SizedBox(height: 10),
         HoverAnimatedWidget(
           onTap: () {
-            // Use url_launcher to open the URL
+            sendEmail();
           },
           child: const Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(Icons.email),
               SizedBox(width: 10),
-              Text("youremail@example.com"),
+              Text(Links.email),
             ],
           ),
         ),
@@ -39,13 +40,13 @@ class ContactAtView extends StatelessWidget {
             _buildSocialMediaIcon(
               icon: FontAwesomeIcons.github,
               label: 'GitHub',
-              url: 'https://github.com/your-profile',
+              url: Links.github,
             ),
             const SizedBox(width: 16),
             _buildSocialMediaIcon(
               icon: FontAwesomeIcons.linkedin,
               label: 'LinkedIn',
-              url: 'https://linkedin.com/in/your-profile',
+              url: Links.linkedin,
             ),
           ],
         ),
@@ -61,7 +62,7 @@ class ContactAtView extends StatelessWidget {
   }) {
     return HoverAnimatedWidget(
       onTap: () {
-        // Use url_launcher to open the URL
+        launchLink(url);
       },
       child: Column(
         children: [

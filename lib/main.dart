@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:portfolio/theme/theme.dart';
 import 'package:portfolio/views/main_page/main_page.dart';
 import 'package:portfolio/views/sidebar/side_navigation_bar.dart';
@@ -124,7 +125,16 @@ class _HomePageState extends State<HomePage> {
           cursor: SystemMouseCursors.click,
           child: GestureDetector(
             onTap: _scrollToTop,
-            child: const Text('Portfolio'),
+            child: Row(
+              children: [
+                Icon(
+                  AntDesign.code_fill,
+                  color: colorScheme.primary,
+                ),
+                const SizedBox(width: 5),
+                const Text('Portfolio'),
+              ],
+            ),
           ),
         ),
         leading: isSmallScreen

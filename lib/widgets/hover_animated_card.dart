@@ -35,7 +35,7 @@ class _HoverAnimatedCardState extends State<HoverAnimatedCard> {
         decoration: BoxDecoration(
           color: _isHovered == true
               ? colorScheme.primaryContainer
-              : colorScheme.secondaryContainer,
+              : colorScheme.surface,
           borderRadius: BorderRadius.circular(12),
           boxShadow: _isHovered == true
               ? [

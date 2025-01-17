@@ -63,6 +63,7 @@ class _SkillsGridViewState extends State<SkillsGridView> {
                     ],
             ),
             child: Card(
+              color: colorScheme.surface,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -83,7 +84,7 @@ class _SkillsGridViewState extends State<SkillsGridView> {
                       skills[index].name,
                       overflow: TextOverflow.visible,
                       style: textTheme.bodyLarge?.copyWith(
-                        color: colorScheme.onSecondaryContainer, // Text color
+                        color: colorScheme.onSurface, // Text color
                         fontWeight: FontWeight.w500,
                       ),
                       textAlign: TextAlign.center,

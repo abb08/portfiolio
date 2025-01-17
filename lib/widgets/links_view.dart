@@ -15,24 +15,28 @@ class LinksView extends StatelessWidget {
         // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildIcon(
+            context,
             icon: FontAwesomeIcons.github,
             hoverMessage: 'Github',
             url: Links.github,
           ),
           const SizedBox(width: 16),
           _buildIcon(
+            context,
             icon: FontAwesomeIcons.linkedin,
             hoverMessage: 'LinkedIn',
             url: Links.linkedin,
           ),
           const SizedBox(width: 16),
           _buildIcon(
+            context,
             icon: Icons.email,
             hoverMessage: Links.email,
             url: Links.email,
           ),
           const SizedBox(width: 16),
           _buildIcon(
+            context,
             icon: Icons.phone,
             hoverMessage: Links.phoneNo,
             url: Links.phoneNo,
@@ -43,11 +47,15 @@ class LinksView extends StatelessWidget {
   }
 
   // Helper method to build a icon with hover animations
-  Widget _buildIcon({
+  Widget _buildIcon(
+    BuildContext context, {
     required IconData icon,
     required String hoverMessage,
     required String url,
   }) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return HoverAnimatedWidget(
       onTap: () {
         switch (url) {
@@ -61,6 +69,15 @@ class LinksView extends StatelessWidget {
       },
       child: Tooltip(
         message: hoverMessage,
+        textStyle: textTheme.bodyMedium?.copyWith(
+          color: colorScheme.onInverseSurface,
+        ),
+        decoration: BoxDecoration(
+          color: colorScheme.inverseSurface,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(4.0),
+          ),
+        ),
         child: Icon(icon),
       ),
     );

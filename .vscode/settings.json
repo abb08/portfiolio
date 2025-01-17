@@ -36,6 +36,7 @@
     "inlineChat.mode": "preview",
     "cSpell.ignoreWords": [
         "LTRB",
+        "apng",
         "dont"
     ],
     "debug.internalConsoleOptions": "openOnSessionStart",

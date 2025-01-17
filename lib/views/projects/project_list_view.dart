@@ -47,7 +47,7 @@ class _ProjectListViewState extends State<ProjectListView> {
                             Text(
                               projects[index].title,
                               style: textTheme.titleMedium?.copyWith(
-                                color: colorScheme.onSecondaryContainer,
+                                color: colorScheme.onSurface,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -58,7 +58,7 @@ class _ProjectListViewState extends State<ProjectListView> {
                               projects[index].description,
                               textAlign: TextAlign.justify,
                               style: textTheme.bodyMedium?.copyWith(
-                                color: colorScheme.onSecondaryContainer,
+                                color: colorScheme.onSurface,
                                 height: 1.5,
                               ),
                             ),

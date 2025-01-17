@@ -1,0 +1,27 @@
+flutter_native_splash:
+
+  color: "#FFFFFF"
+  image: assets/splash/animated_code_light_mode.apng
+
+  color_dark: "#121212"
+  image_dark: assets/splash/animated_code_dark_mode.apng
+
+  # android: false
+  ios: false
+  #web: false
+
+  # Platform specific images can be specified with the following parameters, which will override
+  # the respective parameter.  You may specify all, selected, or none of these parameters:
+
+  #color_web: "#42a5f5"
+  #color_dark_web: "#042a49"
+
+  #image_web: assets/splash-web.gif
+  #image_dark_web: assets/splash-invert-web.gif
+ 
+
+  # The position of the splash image can be set with android_gravity, ios_content_mode, and
+  # web_image_mode parameters.  All default to center.
+
+  # web_image_mode can be one of the following modes: center, contain, stretch, and cover.
+  #web_image_mode: center

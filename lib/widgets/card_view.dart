@@ -11,7 +11,7 @@ class CardView extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       elevation: 4,
-      color: colorScheme.secondaryContainer,
+      color: colorScheme.surface,
       // Define the shape of the card
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),

@@ -119,7 +119,7 @@ class _HomePageState extends State<HomePage> {
       key: _key,
       appBar: AppBar(
         foregroundColor: colorScheme.primary,
-        backgroundColor: colorScheme.onPrimary,
+        backgroundColor: colorScheme.surface,
         title: MouseRegion(
           cursor: SystemMouseCursors.click,
           child: GestureDetector(
@@ -136,12 +136,12 @@ class _HomePageState extends State<HomePage> {
               )
             : null,
         actions: [
-          FilledButton(
-            onPressed: () {
-              scrollToWidget(const GlobalObjectKey('contact'));
-            },
-            child: const Text('Contact'),
-          ),
+          // FilledButton(
+          //   onPressed: () {
+          //     scrollToWidget(const GlobalObjectKey('contact'));
+          //   },
+          //   child: const Text('Contact'),
+          // ),
           Switch(
             value: AdaptiveTheme.of(context).mode.isDark,
             thumbIcon: thumbIcon,

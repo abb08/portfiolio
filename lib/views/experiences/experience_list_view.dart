@@ -41,8 +41,7 @@ class _ExperienceListViewState extends State<ExperienceListView> {
                         Text(
                           experiences[index].date,
                           style: textTheme.bodyMedium?.copyWith(
-                            color: colorScheme.onSecondaryContainer
-                                .withOpacity(0.8),
+                            color: colorScheme.onSurface.withOpacity(0.8),
                           ),
                         ),
                         // Add some spacing
@@ -56,7 +55,7 @@ class _ExperienceListViewState extends State<ExperienceListView> {
                               Text(
                                 experiences[index].jobTitle,
                                 style: textTheme.titleMedium?.copyWith(
-                                  color: colorScheme.onSecondaryContainer,
+                                  color: colorScheme.onSurface,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -66,8 +65,7 @@ class _ExperienceListViewState extends State<ExperienceListView> {
                               Text(
                                 experiences[index].companyName,
                                 style: textTheme.bodyMedium?.copyWith(
-                                  color: colorScheme.onSecondaryContainer
-                                      .withOpacity(0.8),
+                                  color: colorScheme.onSurface.withOpacity(0.8),
                                 ),
                               ),
                               // Add some spacing between the subtitle and the text
@@ -77,7 +75,7 @@ class _ExperienceListViewState extends State<ExperienceListView> {
                                 experiences[index].jobDescription,
                                 textAlign: TextAlign.justify,
                                 style: textTheme.bodyLarge?.copyWith(
-                                  color: colorScheme.onSecondaryContainer,
+                                  color: colorScheme.onSurface,
                                   height: 1.5, // Line height for readability
                                 ),
                               ),

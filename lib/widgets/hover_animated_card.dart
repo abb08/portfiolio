@@ -25,9 +25,11 @@ class _HoverAnimatedCardState extends State<HoverAnimatedCard> {
       onEnter: (_) => setState(() {
         _isHovered = true;
       }),
-      onExit: (_) => setState(() {
-        _isHovered = false;
-      }),
+      onExit: (_) => setState(
+        () {
+          _isHovered = false;
+        },
+      ),
       child: AnimatedContainer(
         duration: widget.duration,
         curve: Curves.easeInOut,
@@ -47,7 +49,7 @@ class _HoverAnimatedCardState extends State<HoverAnimatedCard> {
                 ]
               : [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: colorScheme.shadow.withOpacity(0.1),
                     blurRadius: 4,
                     offset: const Offset(0, 2),
                   ),

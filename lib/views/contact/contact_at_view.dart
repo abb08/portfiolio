@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/constants/constants.dart';
 import 'package:portfolio/controller/launch_url.dart';
 import 'package:portfolio/views/contact/hover_animated_widget.dart';
+import 'package:portfolio/views/contact/social_icons.dart';
 
 class ContactAtView extends StatelessWidget {
   const ContactAtView({super.key});
@@ -34,16 +35,16 @@ class ContactAtView extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        Row(
+        const Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            _buildSocialMediaIcon(
+            SocialIcons(
               icon: FontAwesomeIcons.github,
               label: 'GitHub',
               url: Links.github,
             ),
-            const SizedBox(width: 16),
-            _buildSocialMediaIcon(
+            SizedBox(width: 16),
+            SocialIcons(
               icon: FontAwesomeIcons.linkedin,
               label: 'LinkedIn',
               url: Links.linkedin,
@@ -51,26 +52,6 @@ class ContactAtView extends StatelessWidget {
           ],
         ),
       ],
-    );
-  }
-
-  // Helper method to build a social media icon with hover animations
-  Widget _buildSocialMediaIcon({
-    required IconData icon,
-    required String label,
-    required String url,
-  }) {
-    return HoverAnimatedWidget(
-      onTap: () {
-        launchLink(url);
-      },
-      child: Column(
-        children: [
-          Icon(icon, size: 20),
-          const SizedBox(height: 8),
-          Text(label),
-        ],
-      ),
     );
   }
 }

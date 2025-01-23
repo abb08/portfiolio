@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/constants/constants.dart';
-import 'package:portfolio/controller/launch_url.dart';
+import 'package:portfolio/widgets/intro/resume_button.dart';
 
 class IntroView extends StatelessWidget {
   const IntroView({super.key});
@@ -10,11 +10,8 @@ class IntroView extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
-      decoration: BoxDecoration(
-        color: colorScheme.surface,
-      ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -40,20 +37,7 @@ class IntroView extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          ElevatedButton.icon(
-            onPressed: () {
-              launchLink(Links.resume);
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: colorScheme.primary,
-              foregroundColor: colorScheme.onPrimary,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-            ),
-            label: const Text('View Resume'),
-            icon: const Icon(Icons.picture_as_pdf),
-          ),
+          const ResumeButton(),
         ],
       ),
     );

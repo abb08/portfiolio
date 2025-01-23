@@ -34,12 +34,3 @@ class MainPage extends StatelessWidget {
     );
   }
 }
-
-
-// const List<GlobalObjectKey> keys = [
-//   GlobalObjectKey('about'),
-//   GlobalObjectKey('skills'),
-//   GlobalObjectKey('experience'),
-//   GlobalObjectKey('project'),
-//   GlobalObjectKey('contact'),
-// ];

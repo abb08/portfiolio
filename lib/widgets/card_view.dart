@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 class CardView extends StatelessWidget {
   final Widget child;
+  final VoidCallback? onTap;
 
-  const CardView({super.key, required this.child});
+  const CardView({
+    super.key,
+    required this.child,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +24,11 @@ class CardView extends StatelessWidget {
       // Define how the card's content should be clipped
       clipBehavior: Clip.antiAliasWithSaveLayer,
       // Define the child widget of the card
-      child: child,
+      child: InkWell(
+        splashColor: colorScheme.primary.withAlpha(30),
+        onTap: onTap,
+        child: child,
+      ),
     );
   }
 }

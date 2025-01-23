@@ -45,6 +45,7 @@ dependencies:
   adaptive_theme: ^3.6.0
   flutter_native_splash: ^2.4.4
   flutter_launcher_icons: ^0.14.3
+  animated_toggle_switch: ^0.8.4
 
 
 dev_dependencies:

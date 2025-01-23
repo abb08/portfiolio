@@ -32,6 +32,9 @@ class HeaderView extends StatelessWidget {
             height: 1.5,
           ),
         ),
+        const SizedBox(
+          height: 10,
+        ),
         Text(
           Skills.descriptionSecondary,
           textAlign: TextAlign.center,

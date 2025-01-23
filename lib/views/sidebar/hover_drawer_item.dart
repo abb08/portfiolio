@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class HoverDrawerItem extends StatefulWidget {
   final String label;
@@ -20,6 +21,7 @@ class _HoverDrawerItemState extends State<HoverDrawerItem> {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
+    final isSmallScreen = ResponsiveBreakpoints.of(context).smallerThan(TABLET);
 
     return MouseRegion(
       onEnter: (event) => setState(() => isHovered = true),
@@ -32,11 +34,18 @@ class _HoverDrawerItemState extends State<HoverDrawerItem> {
             child: Text(
               widget.label,
               style: textTheme.bodyLarge?.copyWith(
+                fontSize: isSmallScreen ? 24 : 18,
                 color: isHovered ? colorScheme.primary : colorScheme.onSurface,
                 fontWeight: isHovered ? FontWeight.bold : FontWeight.normal,
               ),
             ),
           ),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal:
+                isSmallScreen ? 24 : 12, // Adjust padding for small screens
+            vertical: isSmallScreen ? 12 : 8,
+          ),
+          hoverColor: colorScheme.surfaceContainerHighest,
         ),
       ),
     );

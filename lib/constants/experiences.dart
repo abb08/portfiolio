@@ -15,4 +15,17 @@ final List<Experience> experiences = [
     ],
     link: 'https://flutter.dev/',
   ),
+  Experience(
+    date: '2024-01-01',
+    jobTitle: 'Flutter Developer',
+    companyName: 'ABC Technology',
+    jobDescription: loremIpsum(words: 40),
+    toolsUsed: const [
+      'Dart',
+      'Flutter',
+      'Firebase',
+      'Material UI',
+    ],
+    link: 'https://flutter.dev/',
+  ),
 ];

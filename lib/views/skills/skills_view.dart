@@ -21,7 +21,7 @@ class SkillsView extends StatelessWidget {
           child: const Column(
             children: [
               HeaderView(),
-              SizedBox(height: 16),
+              SizedBox(height: 20),
               SkillsGridView(),
             ],
           ),

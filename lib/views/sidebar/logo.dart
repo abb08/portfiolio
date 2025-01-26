@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icons_plus/icons_plus.dart';
+import 'package:icons_plus/icons_plus.dart' show AntDesign;
 
 class Logo extends StatelessWidget {
   const Logo({

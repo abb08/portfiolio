@@ -38,7 +38,7 @@
           # TODO: Execute web build in debug mode.
           # flutter run does this transparently either way
           # https://github.com/flutter/flutter/issues/96283#issuecomment-1144750411
-          # flutter build web --profile --dart-define=Dart2jsOptimization=O0
+          flutter build web --profile --dart-define=Dart2jsOptimization=O0
         '';
       };
       
@@ -49,7 +49,7 @@
       enable = true;
       previews = {
         web = {
-          command = ["flutter" "run" "--machine" "-d" "web-server" "--web-hostname" "0.0.0.0" "--web-port" "$PORT"];
+          command = ["flutter" "run" "--release" "--machine" "-d" "web-server" "--web-hostname" "0.0.0.0" "--web-port" "$PORT"];
           manager = "flutter";
         };
         # android = {

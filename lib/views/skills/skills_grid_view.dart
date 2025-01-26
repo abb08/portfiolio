@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icons_plus/icons_plus.dart';
+import 'package:icons_plus/icons_plus.dart' show Brand;
 import 'package:portfolio/constants/skills.dart';
 import 'package:portfolio/views/skills/hover_scaling_card.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -47,9 +47,9 @@ class SkillsGridView extends StatelessWidget {
                     skills[index].name,
                     overflow: TextOverflow.visible,
                     style: textTheme.bodyLarge?.copyWith(
-                      color: colorScheme.onSurface, // Text color
-                      fontWeight: FontWeight.w500,
-                    ),
+                        color: colorScheme.onSurface, // Text color
+                        fontWeight: FontWeight.w500,
+                        overflow: TextOverflow.visible),
                     textAlign: TextAlign.center,
                   ),
                 ],

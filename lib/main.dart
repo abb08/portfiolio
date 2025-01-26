@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/theme/theme.dart';
 import 'package:portfolio/views/home/home_page.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-// import 'package:sidebarx/sidebarx.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowFloatingThemeButton: true,
       builder: (theme, darkTheme) {
         return MaterialApp(
-          title: 'Flutter Demo',
+          title: 'Portfolio',
           scrollBehavior: NoThumbScrollBehavior().copyWith(scrollbars: false),
           theme: theme,
           darkTheme: darkTheme,

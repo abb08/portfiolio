@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/views/about/about_view.dart';
 import 'package:portfolio/views/contact/contact_view.dart';
-import 'package:portfolio/views/experiences/experience_view.dart';
 import 'package:portfolio/views/heading/heading_view.dart';
 import 'package:portfolio/views/projects/project_view.dart';
 import 'package:portfolio/views/skills/skills_view.dart';
@@ -25,7 +24,7 @@ class MainPage extends StatelessWidget {
             if (isSmallScreen) const HeadingView(),
             const AboutView(),
             const SkillsView(),
-            const ExperienceView(),
+            // const ExperienceView(),
             const ProjectView(),
             const ContactView(),
           ],

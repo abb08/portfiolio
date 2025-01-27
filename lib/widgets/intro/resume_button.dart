@@ -23,7 +23,10 @@ class ResumeButton extends StatelessWidget {
         ),
       ),
       label: const Text('View Resume'),
-      icon: const Icon(Icons.picture_as_pdf),
+      icon: Icon(
+        Icons.picture_as_pdf,
+        color: colorScheme.onPrimary,
+      ),
     );
   }
 }

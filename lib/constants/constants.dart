@@ -13,7 +13,7 @@ class Links {
   static const phoneNo = '+9779861551377';
   static const email = 'pudasainiprabesh56@gmail.com';
   static const resume =
-      'https://github.com/prabeshpudasaini/Portfolio/blob/main/assets/pdf/Prabesh_Pudasaini_Flutter_Developer_Resume.pdf';
+      'https://prabesh.pages.dev/Prabesh_Pudasaini_Flutter_Developer_Resume.pdf';
 }
 
 class About {

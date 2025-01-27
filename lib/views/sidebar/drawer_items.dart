@@ -30,13 +30,13 @@ class DrawerItems extends StatelessWidget {
             dismissDrawer(context);
           },
         ),
-        HoverDrawerItem(
-          label: 'Experience',
-          onTap: () {
-            scrollToWidget(const GlobalObjectKey('experience'));
-            dismissDrawer(context);
-          },
-        ),
+        // HoverDrawerItem(
+        //   label: 'Experience',
+        //   onTap: () {
+        //     scrollToWidget(const GlobalObjectKey('experience'));
+        //     dismissDrawer(context);
+        //   },
+        // ),
         HoverDrawerItem(
           label: 'Contact',
           onTap: () {
@@ -48,20 +48,18 @@ class DrawerItems extends StatelessWidget {
     );
   }
 
-  void scrollToWidget(GlobalObjectKey widgetKey) {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final context = widgetKey.currentContext;
-      if (context == null) {
-        debugPrint('Null');
-        return;
-      }
-      await Scrollable.ensureVisible(
-        context,
-        alignment: 0.1, // Positions the widget 30% from the top
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    });
+  void scrollToWidget(GlobalObjectKey widgetKey) async {
+    final context = widgetKey.currentContext;
+    if (context == null) {
+      debugPrint('Null');
+      return;
+    }
+    await Scrollable.ensureVisible(
+      context,
+      alignment: 0.1, // Positions the widget 30% from the top
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
   }
 
   void dismissDrawer(BuildContext context) {

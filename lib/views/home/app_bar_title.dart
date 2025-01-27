@@ -17,6 +17,7 @@ class AppBarTitle extends StatelessWidget {
       child: GestureDetector(
         onTap: _scrollToTop,
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
               AntDesign.code_fill,

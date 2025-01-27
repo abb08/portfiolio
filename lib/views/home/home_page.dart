@@ -86,19 +86,19 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void scrollToWidget(GlobalObjectKey widgetKey) {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final context = widgetKey.currentContext;
-      if (context == null) {
-        debugPrint('Null');
-        return;
-      }
-      await Scrollable.ensureVisible(
-        context,
-        alignment: 0.3, // Positions the widget 30% from the top
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    });
-  }
+  // void scrollToWidget(GlobalObjectKey widgetKey) {
+  //   WidgetsBinding.instance.addPostFrameCallback((_) async {
+  //     final context = widgetKey.currentContext;
+  //     if (context == null) {
+  //       debugPrint('Null');
+  //       return;
+  //     }
+  //     await Scrollable.ensureVisible(
+  //       context,
+  //       alignment: 0.3, // Positions the widget 30% from the top
+  //       duration: const Duration(milliseconds: 300),
+  //       curve: Curves.easeInOut,
+  //     );
+  //   });
+  // }
 }

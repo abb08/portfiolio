@@ -36,3 +36,7 @@ workflows:
       slack:
         channel: "#builds"
         notify_on_build_start: true
+    
+    triggering:
+      events:   
+        - push

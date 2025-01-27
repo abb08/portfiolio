@@ -1,3 +1,4 @@
+workflows: 
   web-workflow:
     name: Web Workflow
     instance_type: mac_mini_m2

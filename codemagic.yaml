@@ -31,7 +31,7 @@ workflows:
       
         - name: Deploy to Cloudflare Pages
           script: | 
-            wrangler pages publish build/web/ --project-name my-portfolio --branch production
+            wrangler pages deploy build/web/ --project-name prabesh --branch production
           
       slack:
         channel: "#builds"

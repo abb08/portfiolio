@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/constants/constants.dart';
 import 'package:portfolio/controller/launch_url.dart';
-import 'package:portfolio/views/contact/hover_animated_widget.dart';
+import 'package:portfolio/widgets/hover_animated_widget.dart';
 
 class IconsView extends StatelessWidget {
   const IconsView({

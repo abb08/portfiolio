@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/views/projects/github_text_button.dart';
 
 import 'package:portfolio/views/projects/project_list_view.dart';
 import 'package:portfolio/widgets/sticky_header_view.dart';
@@ -18,7 +19,16 @@ class ProjectView extends StatelessWidget {
         child: Container(
           color: Theme.of(context).colorScheme.surface,
           key: const GlobalObjectKey('project'),
-          child: const ProjectListView(),
+          child: const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ProjectListView(),
+              SizedBox(
+                height: 10,
+              ),
+              GithubTextButton(),
+            ],
+          ),
         ),
       ),
     );

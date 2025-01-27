@@ -22,6 +22,7 @@ class _HoverAnimatedCardState extends State<HoverAnimatedCard> {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return MouseRegion(
+      
       onEnter: (_) => setState(() {
         _isHovered = true;
       }),

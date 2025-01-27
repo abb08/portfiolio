@@ -7,6 +7,8 @@ class Intro {
 
 class Links {
   static const github = 'https://github.com/prabeshpudasaini';
+  static const githubRepository =
+      'https://github.com/prabeshpudasaini?tab=repositories';
   static const linkedin = 'https://www.linkedin.com/in/prabesh-pudasaini/';
   static const phoneNo = '+9779861551377';
   static const email = 'pudasainiprabesh56@gmail.com';

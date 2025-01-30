@@ -36,7 +36,7 @@
 
 The Portfolio Website is built using Flutter.
 
-The Portfolio Website is fully written in Dart using Flutter. It is an single page website showcasing my work as a Flutter mobile app developer.
+The Portfolio Website is fully written in Dart using Flutter. It is a single page website showcasing my work as a Flutter mobile app developer.
 
 
 ## Technology

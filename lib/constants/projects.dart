@@ -2,6 +2,18 @@ import 'package:portfolio/models/projects.dart';
 
 final List<Projects> projects = [
   const Projects(
+    image: 'Portfolio Banner.png',
+    title: 'Portfolio Website',
+    description:
+        'The Portfolio Website is built using Flutter. The Portfolio Website is fully written in Dart using Flutter. It is a single page website showcasing my work as a Flutter mobile app developer.',
+    builtWith: [
+      'Dart',
+      'Flutter',
+      'Material UI',
+    ],
+    link: 'https://github.com/prabeshpudasaini/Portfolio',
+  ),
+  const Projects(
     image: 'E2EE Chat App Promotion.png',
     title: 'E2EE Chat App',
     description:
